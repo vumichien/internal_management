@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "generatedAt": "2025-06-03T06:28:58.470Z",
+    "tasksAnalyzed": 10,
+    "totalTasks": 10,
+    "analysisCount": 10,
+    "thresholdScore": 5,
+    "projectName": "Taskmaster",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Setup Laravel 11 Project Foundation",
+      "complexityScore": 6,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Break down the Laravel 11 project foundation setup into specific installation, configuration, and infrastructure setup subtasks including Composer operations, authentication setup, database configuration, server setup, and basic project structure creation.",
+      "reasoning": "Medium-high complexity due to multiple technology integrations (Laravel, Breeze, PostgreSQL, Nginx, Supervisor) and infrastructure setup requirements. Each component has specific configuration needs and potential compatibility issues."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Design and Implement Database Schema",
+      "complexityScore": 8,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Create detailed subtasks for each database table migration, including schema design, relationship mapping, index optimization, constraint implementation, and data seeding for the comprehensive management system database.",
+      "reasoning": "High complexity due to extensive relational database design with multiple entities, complex relationships, performance considerations, and data integrity requirements. Requires careful planning of foreign keys, indexes, and cascading rules."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Implement Authentication System with Google Integration",
+      "complexityScore": 7,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Decompose the authentication system into OAuth configuration, controller implementation, middleware setup, session management, user registration flows, and security feature implementation for both traditional and Google authentication methods.",
+      "reasoning": "High complexity involving OAuth2 integration, security considerations, session management, and multiple authentication flows. Requires careful handling of external API integration and user data security."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Create Core Eloquent Models and Relationships",
+      "complexityScore": 7,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Break down model creation into individual model implementation, relationship definition, business logic methods, validation rules, factory creation, and comprehensive testing for each core entity in the system.",
+      "reasoning": "High complexity due to intricate model relationships, business logic implementation, and the need for proper ORM configuration. Critical foundation that affects all other system components."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Build Employee Management System",
+      "complexityScore": 6,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Create subtasks for CRUD operations, user interface development, resource allocation algorithms, workload visualization, file upload handling, reporting features, and bulk operation implementation for comprehensive employee management.",
+      "reasoning": "Medium-high complexity involving full-stack development with CRUD operations, data visualization, file handling, and complex business logic for resource allocation and workload management."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Implement Project Management Core Features",
+      "complexityScore": 8,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Decompose project management into CRUD operations, staff assignment algorithms, financial tracking implementation, dashboard development, workflow management, timeline features, and profitability calculation systems.",
+      "reasoning": "High complexity as the core business feature requiring sophisticated financial calculations, staff allocation algorithms, workflow management, and comprehensive reporting capabilities."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Build Customer and Vendor Management",
+      "complexityScore": 5,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Break down customer and vendor management into CRUD operations, contact management, relationship tracking, project associations, communication history, reporting features, and data import/export functionality.",
+      "reasoning": "Medium complexity with standard CRUD operations, relationship management, and data handling. Less complex than core project management but requires comprehensive contact and relationship tracking."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Implement Daily Activity Tracking with Livewire",
+      "complexityScore": 7,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Create subtasks for Livewire installation, real-time component development, timer functionality, project association interfaces, validation systems, reporting features, mobile responsiveness, and automated reminder systems.",
+      "reasoning": "High complexity due to real-time functionality requirements, Livewire integration, timer mechanisms, mobile responsiveness, and complex time tracking business logic with validation and reporting."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Create Management Dashboards and Reporting",
+      "complexityScore": 6,
+      "recommendedSubtasks": 10,
+      "expansionPrompt": "Break down dashboard creation into role-based controllers, metric calculation systems, chart implementation, export functionality, real-time updates, widget development, and responsive design for comprehensive management reporting.",
+      "reasoning": "Medium-high complexity involving data aggregation, visualization, role-based access, export functionality, and real-time updates. Requires integration with multiple system components for comprehensive reporting."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement External System Integrations",
+      "complexityScore": 9,
+      "recommendedSubtasks": 11,
+      "expansionPrompt": "Decompose external integrations into individual API client setup, service-specific integration implementation, queue job development, error handling systems, webhook processing, configuration management, and monitoring systems for each external service.",
+      "reasoning": "Very high complexity due to multiple external API integrations, asynchronous processing requirements, error handling, webhook management, and the need for robust fallback mechanisms. High potential for integration failures and complex debugging."
+    }
+  ]
+}

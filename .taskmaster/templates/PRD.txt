@@ -1,0 +1,185 @@
+# Overview  
+This internal management system is designed to streamline operations for a software development company by providing comprehensive employee, project, customer, and vendor management capabilities. The system addresses the critical need for resource allocation tracking, financial management, and daily activity monitoring while maintaining integration with existing tools like Redmine, Google Drive, Slack, and Bitbucket.
+
+The primary users are internal management staff, project managers, and employees who need to track time and view their assignments. The system aims to eliminate manual tracking processes and provide real-time visibility into resource utilization and project profitability.
+
+# Core Features  
+
+## Authentication System
+- **Multi-method Login**: Support for username/password authentication and Google company account integration
+- **Extensible Architecture**: Built to accommodate future authentication providers (Microsoft accounts, etc.)
+- **Importance**: Ensures secure access while providing flexibility for different user preferences
+- **Implementation**: Laravel Socialite for Google integration with traditional authentication fallback
+
+## Employee Management
+- **Staff Information Management**: Complete employee database with personal and professional details
+- **Resource Allocation Tracking**: Monitor staff allocation percentages across projects by month
+- **Workload Visualization**: Reverse view showing individual employee workload distribution
+- **Importance**: Enables optimal resource utilization and prevents employee overallocation
+- **Implementation**: Database models for employees with many-to-many relationships to projects
+
+## Customer & Vendor Management
+- **Customer Information Management**: Comprehensive customer data and relationship tracking
+- **Vendor Management**: Outsourcing vendor information and relationship management
+- **Importance**: Centralizes external relationship data for better project coordination
+- **Implementation**: Separate models for customers and vendors with project associations
+
+## Project Management System
+- **Staff Assignment**: Assign personnel with specific percentage allocations per month
+- **Financial Management**: Track revenue, internal costs, and vendor costs with individual rates
+- **Project Status Tracking**: Weekly updates, reporting, and milestone monitoring
+- **System Integration**: Connect with Redmine, Google Drive, Slack, and Bitbucket
+- **Importance**: Core business function enabling project profitability and resource optimization
+- **Implementation**: Complex project model with financial tracking and external API integrations
+
+## Daily Activity Tracking
+- **Time Tracking**: Record daily activities with start/end times and project associations
+- **Data Visualization**: Visual representation of productivity metrics
+- **User Experience**: Simple, non-intrusive interface
+- **Importance**: Provides accurate time data for billing and productivity analysis
+- **Implementation**: Livewire components with real-time tracking capabilities
+
+# User Experience  
+
+## User Personas
+- **Management**: Need high-level dashboards showing resource utilization and project profitability
+- **Project Managers**: Require detailed project views with staff assignments and financial tracking
+- **Employees**: Need simple time tracking interface and personal workload visibility
+
+## Key User Flows
+1. **Daily Time Tracking**: Employee logs in → starts timer → associates with project → stops timer → reviews daily summary
+2. **Project Assignment**: Manager → selects project → assigns staff with percentages → sets duration → confirms allocation
+3. **Financial Review**: Manager → selects project → views revenue vs costs → analyzes profitability trends
+
+## UI/UX Considerations
+- Responsive design for mobile and desktop usage
+- Minimal friction for daily time tracking to encourage adoption
+- Dashboard-driven interface with role-based views
+- Real-time updates using Livewire for immediate feedback
+
+# Technical Architecture  
+
+## System Components
+- **Backend**: Laravel 11 with Breeze authentication
+- **Frontend**: Livewire for reactive components
+- **Database**: PostgreSQL for performance and JSON support
+- **Queue System**: Supervisor for background job processing
+
+## Data Models
+- **User**: Authentication and basic user information
+- **Employee**: Extended user profile with employment details
+- **Project**: Core project information with financial tracking
+- **Customer/Vendor**: External relationship management
+- **ProjectAssignment**: Many-to-many with percentage allocations
+- **TimeEntry**: Daily activity tracking with project associations
+- **FinancialRecord**: Revenue and cost tracking per project
+
+## APIs and Integrations
+- **Google Drive API**: Project folder access
+- **Slack API**: Channel integration for notifications
+- **Redmine API**: Task management synchronization
+- **Bitbucket API**: Repository integration
+
+## Infrastructure Requirements
+- **Server**: Ubuntu VPS with Nginx + PHP-FPM + PostgreSQL
+- **Deployment**: Bitbucket Pipelines with automated deployment
+- **Monitoring**: Application and server monitoring setup
+
+# Development Roadmap  
+
+## Phase 1: Foundation & Authentication (MVP)
+- Basic Laravel 11 setup with Breeze
+- Database schema design and migrations
+- User authentication with Google integration
+- Basic employee management
+- Simple project creation and listing
+- Basic time tracking functionality
+
+## Phase 2: Core Management Features
+- Complete employee management with allocation tracking
+- Customer and vendor management systems
+- Enhanced project management with staff assignments
+- Financial tracking for projects (revenue and costs)
+- Basic reporting and dashboard views
+
+## Phase 3: Advanced Features & Integrations
+- Daily activity tracking with visualization
+- Integration with Redmine for task synchronization
+- Google Drive folder integration
+- Slack notifications and updates
+- Advanced reporting and analytics
+
+## Phase 4: Optimization & Enhancement
+- Performance optimization and caching
+- Advanced data visualization and charts
+- Mobile app considerations
+- Microservices architecture migration planning
+- Advanced workflow automation
+
+# Logical Dependency Chain
+
+## Foundation First (Phase 1)
+- Authentication system must be established before any user-specific features
+- Basic database schema and models are prerequisites for all functionality
+- Employee management is foundational for project assignments
+
+## Quick Usable Frontend (Phase 1-2)
+- Time tracking interface provides immediate value to users
+- Basic project listing and assignment views show system utility
+- Dashboard with key metrics demonstrates system value early
+
+## Feature Building Blocks
+1. **Users & Authentication** → **Employee Management** → **Project Creation**
+2. **Project Creation** → **Staff Assignment** → **Time Tracking**
+3. **Time Tracking** → **Financial Tracking** → **Reporting**
+4. **Core Features** → **External Integrations** → **Advanced Analytics**
+
+## Atomic Feature Scope
+- Each feature should be independently testable and deployable
+- Database migrations should be reversible and non-breaking
+- API endpoints should be versioned for future compatibility
+- UI components should be modular and reusable
+
+# Risks and Mitigations  
+
+## Technical Challenges
+- **Risk**: Complex many-to-many relationships for project assignments
+- **Mitigation**: Careful database design with proper indexing and query optimization
+
+- **Risk**: Real-time time tracking performance issues
+- **Mitigation**: Use Livewire polling with optimized queries and caching
+
+## MVP Definition
+- **Risk**: Feature creep leading to delayed delivery
+- **Mitigation**: Strict adherence to Phase 1 scope with clear acceptance criteria
+
+- **Risk**: User adoption challenges with time tracking
+- **Mitigation**: Focus on UX simplicity and provide clear value demonstration
+
+## Resource Constraints
+- **Risk**: Integration complexity with external systems
+- **Mitigation**: Implement integrations in phases with fallback manual processes
+
+- **Risk**: Database performance with large datasets
+- **Mitigation**: Implement proper indexing, query optimization, and consider read replicas
+
+# Appendix  
+
+## Technical Specifications
+- **PHP Version**: 8.2+
+- **Laravel Version**: 11.x
+- **Database**: PostgreSQL 14+
+- **Web Server**: Nginx with PHP-FPM
+- **Process Manager**: Supervisor for queue workers
+
+## Integration Requirements
+- **Google Workspace**: OAuth2 setup for company domain
+- **Redmine**: API access credentials and endpoint configuration
+- **Slack**: Bot token and workspace permissions
+- **Bitbucket**: Repository access tokens and webhook setup
+
+## Performance Targets
+- **Page Load Time**: < 2 seconds for dashboard views
+- **Time Tracking Response**: < 500ms for start/stop actions
+- **Report Generation**: < 5 seconds for monthly reports
+- **Concurrent Users**: Support for 50+ simultaneous users 

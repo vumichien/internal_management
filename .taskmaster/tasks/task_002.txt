@@ -1,0 +1,83 @@
+# Task ID: 2
+# Title: Design and Implement Database Schema
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create comprehensive database migrations for all core entities including users, employees, projects, customers, vendors, and relationships
+# Details:
+Create migrations for:
+1. Users table (extends default Laravel users)
+2. Employees table with employment details and foreign key to users
+3. Projects table with financial tracking fields
+4. Customers and Vendors tables
+5. ProjectAssignments pivot table with percentage allocations and date ranges
+6. TimeEntries table for daily activity tracking
+7. FinancialRecords table for revenue and cost tracking
+8. Add proper indexes for performance optimization
+9. Set up foreign key constraints and cascading rules
+10. Include JSON fields for flexible data storage where needed
+
+# Test Strategy:
+Run migrations successfully, verify all tables created with correct structure, test foreign key constraints, validate indexes are properly created, seed test data and verify relationships work correctly
+
+# Subtasks:
+## 1. Create Users Table Migration [pending]
+### Dependencies: None
+### Description: Extend the default Laravel users table with additional fields needed for the management system
+### Details:
+Create a migration that extends the default Laravel users table with additional fields such as role (enum: admin, manager, employee), status (active/inactive), profile_image_path, last_login_at, and any other user-specific fields. Include proper indexes on frequently queried fields like email and role.
+
+## 2. Create Employees Table Migration [pending]
+### Dependencies: 2.1
+### Description: Design and implement the employees table with employment details and relationship to users
+### Details:
+Create a migration for the employees table with fields like employee_id (unique identifier), user_id (foreign key to users table), job_title, department, hire_date, termination_date (nullable), salary, employment_type (full-time, part-time, contractor), manager_id (self-referencing foreign key), and contact details. Add appropriate indexes on user_id, department, and manager_id.
+
+## 3. Create Projects Table Migration [pending]
+### Dependencies: None
+### Description: Implement the projects table with all necessary fields for project and financial tracking
+### Details:
+Create a migration for the projects table with fields including project_id, name, description, start_date, end_date, status (enum: planned, active, on-hold, completed), budget, actual_cost, estimated_hours, customer_id (nullable foreign key), project_manager_id (foreign key to employees), created_at, updated_at. Add JSON field for custom_attributes to store flexible project metadata. Create indexes on status, customer_id, and project_manager_id.
+
+## 4. Create Customers Table Migration [pending]
+### Dependencies: None
+### Description: Design and implement the customers table for client information storage
+### Details:
+Create a migration for the customers table with fields including customer_id, company_name, contact_person, email, phone, address (or separate address fields), industry, notes, status (active/inactive), created_at, updated_at. Add a JSON field for additional_contacts to store multiple contact persons. Create indexes on company_name, email, and status.
+
+## 5. Create Vendors Table Migration [pending]
+### Dependencies: None
+### Description: Design and implement the vendors table for supplier information storage
+### Details:
+Create a migration for the vendors table with fields including vendor_id, company_name, contact_person, email, phone, address (or separate address fields), service_type, payment_terms, tax_id, status (active/inactive), created_at, updated_at. Add a JSON field for services_provided to store flexible service information. Create indexes on company_name, service_type, and status.
+
+## 6. Create ProjectAssignments Pivot Table Migration [pending]
+### Dependencies: 2.2, 2.3
+### Description: Implement the pivot table for managing employee assignments to projects with allocation percentages
+### Details:
+Create a migration for the project_assignments table with fields including assignment_id, project_id (foreign key), employee_id (foreign key), role_on_project, allocation_percentage, start_date, end_date (nullable), is_active, created_at, updated_at. Add a unique constraint on the combination of project_id, employee_id, and date ranges to prevent overlapping assignments. Create indexes on project_id, employee_id, and is_active.
+
+## 7. Create TimeEntries Table Migration [pending]
+### Dependencies: 2.2, 2.3
+### Description: Design and implement the time entries table for daily activity tracking
+### Details:
+Create a migration for the time_entries table with fields including entry_id, employee_id (foreign key), project_id (foreign key), date, hours_worked, description, status (submitted, approved, rejected), submitted_at, approved_by (nullable foreign key to users), approved_at (nullable), created_at, updated_at. Add indexes on employee_id, project_id, date, and status for efficient querying of time reports.
+
+## 8. Create FinancialRecords Table Migration [pending]
+### Dependencies: 2.3, 2.4, 2.5
+### Description: Implement the financial records table for tracking revenue and costs
+### Details:
+Create a migration for the financial_records table with fields including record_id, project_id (foreign key), type (enum: revenue, expense), amount, currency, description, date, category, reference_number, related_entity_type (customer, vendor, employee), related_entity_id, created_by (foreign key to users), created_at, updated_at. Add indexes on project_id, type, date, and category for financial reporting queries.
+
+## 9. Implement Foreign Key Constraints and Cascading Rules [pending]
+### Dependencies: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8
+### Description: Set up all foreign key constraints with appropriate cascading rules across all tables
+### Details:
+Review all migrations and ensure proper foreign key constraints are in place. Implement appropriate cascading rules: CASCADE for updates to maintain referential integrity, SET NULL or RESTRICT for deletes depending on business requirements. For example, when a user is deleted, their employee record might be kept but with user_id set to NULL, while deleting a project might cascade to delete all its assignments and time entries.
+
+## 10. Create Database Seeders for Testing and Development [pending]
+### Dependencies: 2.9
+### Description: Implement comprehensive database seeders for all tables to facilitate testing and development
+### Details:
+Create database seeders for all tables with realistic test data. Include a main DatabaseSeeder that coordinates all individual seeders in the correct order respecting foreign key constraints. Create factory classes for each model to generate random but realistic data. Implement different seeding environments (minimal, standard, comprehensive) for different development needs. Ensure seeders can be run repeatedly without errors by checking for existing data.
+

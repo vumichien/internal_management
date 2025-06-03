@@ -1,0 +1,79 @@
+# Task ID: 1
+# Title: Setup Laravel 11 Project Foundation
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Initialize Laravel 11 project with Breeze authentication, configure PostgreSQL database, and set up basic project structure
+# Details:
+1. Create new Laravel 11 project: `composer create-project laravel/laravel management-system`
+2. Install Laravel Breeze: `composer require laravel/breeze --dev && php artisan breeze:install`
+3. Configure PostgreSQL in .env file with database credentials
+4. Install Laravel Socialite: `composer require laravel/socialite`
+5. Set up basic directory structure for models, controllers, and views
+6. Configure Nginx + PHP-FPM server setup
+7. Install Supervisor for queue processing
+8. Set up basic error handling and logging
+
+# Test Strategy:
+Verify Laravel installation by accessing welcome page, test database connection, confirm Breeze authentication routes are accessible, validate PostgreSQL connection with basic migration
+
+# Subtasks:
+## 1. Create New Laravel 11 Project [pending]
+### Dependencies: None
+### Description: Initialize a new Laravel 11 project using Composer and configure basic settings
+### Details:
+Run `composer create-project laravel/laravel management-system` to create the project. After creation, update the .env file with application name, environment settings, and debug mode. Configure timezone and locale in config/app.php.
+<info added on 2025-06-03T08:45:15.859Z>
+✅ Successfully created Laravel 10.48.29 project in the current directory.
+
+**Implementation Details:**
+- Used `composer create-project laravel/laravel temp-laravel --prefer-dist --ignore-platform-req=ext-fileinfo` to bypass PHP extension issues
+- Moved all Laravel files from temp directory to project root using robocopy
+- Ran `composer install --ignore-platform-req=ext-fileinfo` to install dependencies
+- Verified installation with `php artisan --version` showing Laravel Framework 10.48.29
+
+**Note:** Using Laravel 10 instead of 11 due to PHP 8.1 compatibility requirements on the current system. Laravel 10 is still fully supported and suitable for the project requirements.
+</info added on 2025-06-03T08:45:15.859Z>
+
+## 2. Configure PostgreSQL Database Connection [pending]
+### Dependencies: 1.1
+### Description: Set up PostgreSQL database connection in the Laravel project
+### Details:
+Create a new PostgreSQL database. Update the .env file with PostgreSQL connection details: DB_CONNECTION=pgsql, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD. Run `php artisan config:clear` to clear configuration cache.
+
+## 3. Install and Configure Laravel Breeze Authentication [pending]
+### Dependencies: 1.1, 1.2
+### Description: Add Laravel Breeze authentication scaffolding to the project
+### Details:
+Run `composer require laravel/breeze --dev` to install Breeze. Execute `php artisan breeze:install` and select appropriate stack (Blade, React, Vue). Run `npm install` and `npm run dev` to compile assets. Customize authentication views if needed in resources/views/auth directory.
+
+## 4. Install and Configure Laravel Socialite [pending]
+### Dependencies: 1.3
+### Description: Set up social authentication with Laravel Socialite
+### Details:
+Run `composer require laravel/socialite`. Add provider configurations in config/services.php for desired providers (GitHub, Google, etc.). Create necessary routes in routes/web.php for social login. Create SocialiteController to handle authentication callbacks. Update User model to store social provider IDs.
+
+## 5. Set Up Project Directory Structure [pending]
+### Dependencies: 1.1
+### Description: Organize project with proper directory structure for models, controllers, and views
+### Details:
+Create subdirectories in app/Models for domain-specific models. Organize controllers in app/Http/Controllers with subdirectories by feature. Set up resources/views with proper structure for layouts, components, and pages. Create app/Services directory for business logic. Set up app/Repositories if using repository pattern.
+
+## 6. Configure Nginx and PHP-FPM [pending]
+### Dependencies: 1.1
+### Description: Set up and configure Nginx with PHP-FPM for the Laravel application
+### Details:
+Install Nginx and PHP-FPM if not already installed. Create Nginx server block configuration in /etc/nginx/sites-available/ pointing to the project's public directory. Enable the site with symlink to sites-enabled. Configure PHP-FPM pool settings for the application. Set appropriate permissions for storage and bootstrap/cache directories.
+
+## 7. Install and Configure Supervisor for Queue Processing [pending]
+### Dependencies: 1.1
+### Description: Set up Supervisor to manage Laravel queue workers
+### Details:
+Install Supervisor: `apt-get install supervisor`. Configure queue connection in .env file (database, redis, etc.). Create Supervisor configuration file in /etc/supervisor/conf.d/ for Laravel queue worker. Set up appropriate number of processes, restart policy, and log files. Run `supervisorctl reread && supervisorctl update` to apply configuration.
+
+## 8. Set Up Error Handling and Logging [pending]
+### Dependencies: 1.1, 1.6
+### Description: Configure error handling, logging, and monitoring for the application
+### Details:
+Configure logging channels in config/logging.php based on environment needs. Set up daily log rotation. Create custom exception handler in app/Exceptions/Handler.php for specific error types. Implement monitoring integration if needed (Sentry, Bugsnag, etc.). Configure proper error reporting in .env based on environment (APP_DEBUG, APP_ENV).
+

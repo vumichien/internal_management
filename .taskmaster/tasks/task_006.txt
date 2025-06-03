@@ -1,0 +1,82 @@
+# Task ID: 6
+# Title: Implement Project Management Core Features
+# Status: pending
+# Dependencies: 4, 5
+# Priority: high
+# Description: Build comprehensive project management system with staff assignments, financial tracking, and status monitoring
+# Details:
+1. Create ProjectController with full CRUD operations
+2. Build project creation form with customer association
+3. Implement staff assignment interface with percentage allocations
+4. Create financial tracking for revenue and costs
+5. Build project dashboard with key metrics
+6. Implement project status workflow management
+7. Create project timeline and milestone tracking
+8. Add project search and filtering capabilities
+9. Build project profitability calculations
+10. Create project reporting views with charts
+
+# Test Strategy:
+Test project CRUD operations, verify staff assignment calculations, test financial tracking accuracy, validate project status transitions, test profitability calculations with various scenarios
+
+# Subtasks:
+## 1. Design Project Entity CRUD Operations [pending]
+### Dependencies: None
+### Description: Create the data model and API endpoints for basic project management CRUD operations
+### Details:
+Define project entity with attributes like name, description, start/end dates, client, budget, status. Implement RESTful API endpoints for creating, reading, updating, and deleting projects. Include validation logic and error handling.
+
+## 2. Implement Staff Assignment Algorithm [pending]
+### Dependencies: 6.1
+### Description: Develop an algorithm for optimal staff assignment to projects based on skills, availability, and workload
+### Details:
+Create a matching algorithm that considers staff skills, current workload, availability calendar, and project requirements. Include priority weighting, conflict resolution, and optimization for team composition. Implement API endpoints for assignment operations.
+
+## 3. Build Financial Tracking System [pending]
+### Dependencies: 6.1
+### Description: Develop the core financial tracking components for project budgeting and expense management
+### Details:
+Create models for budget allocation, expense tracking, invoicing, and payment status. Implement transaction logging, budget alerts, and financial reporting capabilities. Include currency handling and tax calculation features.
+
+## 4. Create Project Dashboard UI [pending]
+### Dependencies: 6.1, 6.2, 6.3
+### Description: Design and implement the main project dashboard interface with key metrics and visualizations
+### Details:
+Develop a responsive dashboard with project status cards, timeline visualization, budget vs. actual spending charts, team allocation view, and key performance indicators. Include filtering and sorting capabilities.
+
+## 5. Implement Workflow Management System [pending]
+### Dependencies: 6.1
+### Description: Build a configurable workflow engine to manage project stages and task transitions
+### Details:
+Create a workflow definition system with customizable stages, approval processes, and conditional transitions. Implement status change hooks, notification triggers, and audit logging for workflow events.
+
+## 6. Develop Timeline and Gantt Chart Features [pending]
+### Dependencies: 6.1, 6.5
+### Description: Create interactive timeline visualization with dependencies and critical path analysis
+### Details:
+Implement Gantt chart visualization with task dependencies, milestones, and resource allocation. Include drag-and-drop rescheduling, critical path highlighting, and timeline export capabilities.
+
+## 7. Build Profitability Calculation System [pending]
+### Dependencies: 6.3
+### Description: Implement algorithms for real-time project profitability analysis and forecasting
+### Details:
+Create models for calculating project margins, cost analysis, revenue recognition, and profitability forecasting. Implement trend analysis, variance reporting, and what-if scenario modeling for financial projections.
+
+## 8. Integrate Resource Allocation Optimization [pending]
+### Dependencies: 6.2, 6.7
+### Description: Develop advanced resource allocation features to maximize efficiency and profitability
+### Details:
+Create optimization algorithms for resource allocation across multiple projects, considering constraints like staff availability, skills, and project priorities. Implement capacity planning, utilization reporting, and bottleneck identification.
+
+## 9. Implement Reporting and Analytics Module [pending]
+### Dependencies: 6.3, 6.7
+### Description: Build comprehensive reporting capabilities for project performance and financial metrics
+### Details:
+Create a reporting engine with customizable templates for project status, financial performance, resource utilization, and profitability analysis. Include export capabilities, scheduled reports, and interactive data exploration.
+
+## 10. Develop Client Portal and Collaboration Features [pending]
+### Dependencies: 6.4, 6.6, 6.9
+### Description: Create client-facing interfaces for project transparency and collaboration
+### Details:
+Implement a client portal with project status updates, document sharing, approval workflows, and communication tools. Include permission management, activity feeds, and notification preferences for external stakeholders.
+

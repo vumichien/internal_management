@@ -1,0 +1,75 @@
+# Task ID: 4
+# Title: Create Core Eloquent Models and Relationships
+# Status: pending
+# Dependencies: 2
+# Priority: high
+# Description: Implement all Eloquent models with proper relationships, accessors, mutators, and business logic methods
+# Details:
+Create models:
+1. User model (extend default with additional methods)
+2. Employee model with belongsTo User relationship
+3. Project model with financial calculation methods
+4. Customer and Vendor models
+5. ProjectAssignment model for many-to-many with pivot data
+6. TimeEntry model with project associations
+7. FinancialRecord model
+Implement relationships:
+- Employee belongsTo User
+- Project belongsToMany Employee through ProjectAssignment
+- Project belongsTo Customer
+- TimeEntry belongsTo Employee and Project
+- FinancialRecord belongsTo Project
+Add model factories for testing and seeding
+
+# Test Strategy:
+Unit tests for all model relationships, test model factories generate valid data, verify accessor/mutator functionality, test model validation rules, confirm cascade deletes work properly
+
+# Subtasks:
+## 1. Define core entity models [pending]
+### Dependencies: None
+### Description: Identify and implement all core entity models with their basic attributes and data types
+### Details:
+Create model classes for each core entity in the system. Define all necessary properties with appropriate data types, annotations, and access modifiers. Ensure proper encapsulation and follow naming conventions.
+
+## 2. Implement model relationships [pending]
+### Dependencies: 4.1
+### Description: Define all relationships between models (one-to-one, one-to-many, many-to-many)
+### Details:
+Configure navigation properties and foreign keys for all entity relationships. Use appropriate ORM annotations/configurations to specify relationship types, cascade behaviors, and loading strategies.
+
+## 3. Add validation rules [pending]
+### Dependencies: 4.1
+### Description: Implement data validation rules for all model properties
+### Details:
+Add validation attributes or rules for each property (required fields, length restrictions, format validations, etc.). Implement custom validation logic where standard validation attributes are insufficient.
+
+## 4. Implement business logic methods [pending]
+### Dependencies: 4.1, 4.2
+### Description: Add domain-specific business logic methods to each model
+### Details:
+Implement methods that encapsulate business rules and operations specific to each entity. This includes calculations, state transitions, and complex validations that involve multiple properties or related entities.
+
+## 5. Create model factories [pending]
+### Dependencies: 4.1, 4.2, 4.3
+### Description: Develop factory classes for generating test instances of each model
+### Details:
+Implement factory classes that can create valid instances of each model with realistic test data. Include options to customize specific properties and relationships for different test scenarios.
+
+## 6. Write unit tests for models [pending]
+### Dependencies: 4.3, 4.5
+### Description: Create comprehensive unit tests for model properties and validation
+### Details:
+Write tests that verify property getters/setters, validation rules, and any simple methods. Ensure all validation rules are properly tested with both valid and invalid inputs.
+
+## 7. Write unit tests for business logic [pending]
+### Dependencies: 4.4, 4.5
+### Description: Create tests for all business logic methods in the models
+### Details:
+Develop tests that verify the correctness of all business logic methods under various scenarios. Include edge cases and ensure proper handling of invalid inputs or states.
+
+## 8. Test model relationships [pending]
+### Dependencies: 4.2, 4.5
+### Description: Create integration tests to verify proper relationship configurations
+### Details:
+Write tests that verify the correct loading, saving, and cascading behavior of entity relationships. Test scenarios should include creating, updating, and deleting entities with various relationship configurations.
+
